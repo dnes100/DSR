@@ -1,0 +1,38 @@
+<%= form_for @level, :html => { :class => "form-horizontal level" } do |f| %>
+
+    <% if @level.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@level.errors.count, "error") %> prohibited this level from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @level.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :level_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :level_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@level[:level_id]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :level_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :level_name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@level[:level_name]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            levels_path, :class => 'btn btn-default' %>
+
+<% end %>

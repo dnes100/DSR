@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Your Message Subject or Title</title>
+        <style type="text/css">
+        </style>
+    </head>
+    <body>
+        <table width="100%" cellpadding="10" cellspacing="40" border="0" font="black">
+            <tr><td>
+                    <p>Hi &lt;Manager&gt;,</p>
+                    <p><br /><br />Please find Todays DSR:</p>
+                </td>
+            </tr>
+
+            <% @tasks.each do |employee, tasks| %>
+              <tr>
+                  <td>     
+                      <b><%= employee.employee_name %></b>
+
+                      <table width="100%" border='4'>
+                          <thead>
+                              <tr>
+                                  <th><%= "Date" %></th>
+                                  <th><%= "Employee id" %></th>
+                                  <th><%= "Task" %></th>
+                                  <th><%= "Task_status" %></th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <% tasks.each do |task| %>
+                                <tr>
+                                    <td><%= task.date %></td>
+                                    <td><%= task.employee_id %></td>
+                                    <td><%= task.task %></td>
+                                    <td><%= task.task_status %></td>
+                                </tr>
+                              <% end %>
+                          </tbody>
+                      </table>
+                  </td>
+              </tr>
+            <% end %>
+
+            <tr>
+                <td>This mail is sent via DSR application.</td>
+            </tr>
+
+        </table>
+    </body>
+
+</html>

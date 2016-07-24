@@ -1,0 +1,52 @@
+<%= form_for @task, :html => { :class => "form-horizontal task" } do |f| %>
+
+    <% if @task.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :date, :class => 'form-control' %>
+    </div>
+    <%= error_span(@task[:date]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :employee_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :employee_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@task[:employee_id]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :task, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :task, :class => 'form-control' %>
+    </div>
+    <%= error_span(@task[:task]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :task_status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :task_status, :class => 'form-control' %>
+    </div>
+    <%= error_span(@task[:task_status]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            tasks_path, :class => 'btn btn-default' %>
+
+<% end %>
